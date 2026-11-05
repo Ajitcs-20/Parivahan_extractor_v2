@@ -1,0 +1,5 @@
+label,yAxis,xAxis
+Geographical Master,vehicleMakerName,
+Technical Master,vehicleClass,
+Time-Series Master,calendarYear,
+Granular RTO Master,rtoName,

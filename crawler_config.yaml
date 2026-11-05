@@ -1,0 +1,58 @@
+# Parivahan Auto-Crawler Configuration
+# ======================================
+# delay_seconds        : seconds to pause between consecutive crawl requests
+# max_retries          : portal/network retry attempts per filter combo
+# captcha_max_attempts : max OCR tries before falling back to manual CAPTCHA
+# export_formats       : list from [parquet, csv, excel]
+# headless             : false = visible browser window (recommended for debugging)
+#
+# FILTERS
+# -------
+# List any supported portal filter IDs under "filters:".
+# Each key maps to a list of values. The crawler generates the Cartesian product
+# of all combinations (all combinations).
+#
+# Set discover_x_axes to true to select each configured Y-axis and read the
+# valid X-axis options directly from the portal before crawling.
+# xAxis: auto   →  locally previews all known valid X-axis combinations.
+#
+# Supported filter IDs:
+#   reportYear, reportMonth, fromYear, toYear, fromDate, toDate,
+#   stateName, rtoCode, vehicleEmission, vehicleMaker,
+#   vehicleCategoryGroup, vehicleSubCategory, vehicleClass,
+#   vehicleFuel, evType, vehicleStatus, vehicleOwnerType,
+#   vehicleType, fitnessCheck, delhiNcr, yAxis, xAxis,
+#   archivedFlags, reportType, financialYearSelect
+
+delay_seconds: 1.5
+max_retries: 3
+captcha_max_attempts: 3
+headless: false
+
+export_formats:
+  - parquet
+
+filters:
+  fromYear: 2026
+  toYear: 2026
+  stateName:
+    - DL
+    - MH
+    - GA
+  vehicleFuel:
+    - ELECTRIC
+  yAxis:
+    - financialYear
+    - vehicleCategoryGroup
+    - vehicleClass
+    - vehicleType
+    - vehicleMakerName
+    - stateCode
+    - rtoName
+    - vehiclePollutionNorm
+    - monthWise
+    - vehicleFuel
+  xAxis:
+    - auto
+
+discover_x_axes: true
